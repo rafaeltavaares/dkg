@@ -1,6 +1,7 @@
 package dkg.metric.demo.Controllers;
 
 
+import dkg.metric.demo.DTOs.SearchContentDTO;
 import dkg.metric.demo.DTOs.SearchDTO;
 import dkg.metric.demo.Services.SearchService;
 import org.apache.http.client.methods.HttpGet;
@@ -36,7 +37,10 @@ public class SearchController {
 
             // Parse the response (JSON parsing could be done here)
             JSONObject responseJson = new JSONObject(jsonResponse);
-            return responseJson.toString();
+            JSONObject content = responseJson.getJSONObject("searchInformation");
+            SearchContentDTO data = new SearchContentDTO(search.content(),content.getString("totalResults"), content.getDouble("searchTime"));
+            this.service.create(data);
+            return content.toString();
         }
     }
 
