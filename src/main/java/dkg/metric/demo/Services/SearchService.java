@@ -3,11 +3,16 @@ package dkg.metric.demo.Services;
 import dkg.metric.demo.DTOs.SearchContentDTO;
 import dkg.metric.demo.DTOs.SearchDTO;
 import dkg.metric.demo.Entities.Search;
+import dkg.metric.demo.Entities.Users;
 import dkg.metric.demo.Repositories.SearshRepository;
+import dkg.metric.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.parser.Entity;
+import java.util.Optional;
 
 @Service
 public class SearchService implements BaseService<Search>{
@@ -15,16 +20,16 @@ public class SearchService implements BaseService<Search>{
     @Autowired
     private SearshRepository repository;
 
+    @Autowired UserService userService;
 
     public void create(SearchContentDTO data) throws Exception{
-      Search search = new Search(data);
+
+       Optional<Users> user = userService.findById(data.user_id());
+      Search search = new Search(data,user);
       this.save(search);
     }
 
-    @Override
-    public Search create(Search entity) {
-        return null;
-    }
+
 
     @Override
     public Search save(Search entity) {

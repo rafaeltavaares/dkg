@@ -38,9 +38,9 @@ public class SearchController {
             // Parse the response (JSON parsing could be done here)
             JSONObject responseJson = new JSONObject(jsonResponse);
             JSONObject content = responseJson.getJSONObject("searchInformation");
-            SearchContentDTO data = new SearchContentDTO(search.content(),content.getString("totalResults"), content.getDouble("searchTime"));
-            this.service.create(data);
-            return content.toString();
+            SearchContentDTO contentDTO = new SearchContentDTO(search.content(),content.getString("totalResults"), content.getDouble("searchTime"), search.user_id());
+            service.create(contentDTO);
+            return responseJson.toString();
         }
     }
 

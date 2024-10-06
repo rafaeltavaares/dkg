@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface BaseService<E> {
     //Interface Basica e comum de Servico
-    E create (E entity);
+
     E save (E entity);
     E findById (Long id);
     Page<E> findAll (Pageable pageable);

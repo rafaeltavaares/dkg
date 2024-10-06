@@ -7,6 +7,8 @@ import java.util.Date;
 
 @Table
 @Entity
+@Data
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
