@@ -1,6 +1,4 @@
-package dkg.metric.demo.DTOs;
-
-import dkg.metric.demo.Entities.Users;
+package dkg.metric.demo.DTOs.Search;
 
 public record SearchContentDTO(String content, String totalResults, Double SearchTime, Long user_id) {
 }

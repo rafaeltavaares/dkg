@@ -1,5 +1,6 @@
 package dkg.metric.demo.Entities;
 
+import dkg.metric.demo.DTOs.User.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,5 +28,15 @@ public class Users {
     private String CPF;
 
     private Date date_of_birth;
+
+
+    public Users(UserDTO data){
+        this.CPF = data.cpf();
+        this.first_name = data.first_name();
+        this.last_name = data.last_name();
+        this.date_of_birth = data.birth_date();
+    }
+
+
 }
 

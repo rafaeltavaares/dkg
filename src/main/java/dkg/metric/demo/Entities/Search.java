@@ -1,14 +1,11 @@
 package dkg.metric.demo.Entities;
 
 
-import dkg.metric.demo.DTOs.SearchContentDTO;
-import dkg.metric.demo.DTOs.SearchDTO;
+import dkg.metric.demo.DTOs.Search.SearchContentDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.User;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 @Table(name = "queryrequest")
